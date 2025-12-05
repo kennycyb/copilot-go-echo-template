@@ -1,0 +1,61 @@
+{
+    "go.useLanguageServer": true,
+    "go.lintTool": "golangci-lint",
+    "go.lintFlags": ["--fast"],
+    "go.formatTool": "goimports",
+    "go.testFlags": ["-v"],
+    "go.coverOnSave": true,
+    "go.coverageDecorator": {
+        "type": "gutter",
+        "coveredHighlightColor": "rgba(64,128,128,0.5)",
+        "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+        "coveredGutterStyle": "blockgreen",
+        "uncoveredGutterStyle": "blockred"
+    },
+    "go.testOnSave": false,
+    "go.buildOnSave": "workspace",
+    "go.vetOnSave": "workspace",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    "[go]": {
+        "editor.defaultFormatter": "golang.go",
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false,
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        }
+    },
+    "[go.mod]": {
+        "editor.defaultFormatter": "golang.go",
+        "editor.formatOnSave": true
+    },
+    "gopls": {
+        "ui.semanticTokens": true,
+        "ui.completion.usePlaceholders": true,
+        "analyses": {
+            "unusedparams": true,
+            "shadow": true
+        },
+        "staticcheck": true
+    },
+    "files.associations": {
+        "*.go": "go",
+        "go.mod": "go.mod",
+        "go.sum": "go.sum"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/vendor": true,
+        "**/*.exe": true,
+        "**/bin": true,
+        "coverage.out": true,
+        "coverage.html": true
+    },
+    "search.exclude": {
+        "**/vendor": true,
+        "**/node_modules": true
+    }
+}
