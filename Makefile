@@ -68,7 +68,7 @@ tidy: ## Tidy dependencies
 	go mod tidy
 
 ## Development Tools
-install-tools: ## Install development tools
+install-tools: ## Install development tools (uses @latest, consider pinning versions for team consistency)
 	@echo "Installing development tools..."
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/onsi/ginkgo/v2/ginkgo@latest

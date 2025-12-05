@@ -13,7 +13,7 @@ We use **Ginkgo v2** with **Gomega** for BDD-style testing:
 
 ```bash
 go install github.com/onsi/ginkgo/v2/ginkgo@latest
-go get github.com/onsi/gomega/...
+go get github.com/onsi/gomega
 ```
 
 ## Test Structure

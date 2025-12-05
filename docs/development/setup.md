@@ -47,12 +47,14 @@ go mod download
 # Using Makefile
 make install-tools
 
-# Or manually
+# Or manually (using @latest - consider pinning versions for team consistency)
 go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 go install github.com/onsi/ginkgo/v2/ginkgo@latest
 go install golang.org/x/tools/cmd/goimports@latest
 go install github.com/swaggo/swag/cmd/swag@latest
 ```
+
+> **Note**: For team consistency, consider creating a `tools.go` file to pin tool versions or specify exact versions instead of `@latest`.
 
 ### 4. VS Code Setup
 
