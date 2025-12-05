@@ -1,0 +1,77 @@
+# golangci-lint configuration
+# Reference: https://golangci-lint.run/usage/configuration/
+
+run:
+  timeout: 5m
+  tests: true
+  modules-download-mode: readonly
+
+output:
+  formats:
+    - format: colored-line-number
+  print-issued-lines: true
+  print-linter-name: true
+
+linters:
+  enable:
+    # Default linters
+    - errcheck        # Check for unchecked errors
+    - gosimple        # Simplify code
+    - govet           # Report suspicious constructs
+    - ineffassign     # Detect ineffectual assignments
+    - staticcheck     # Static analysis checks
+    - unused          # Check for unused code
+
+    # Additional linters
+    - gofmt           # Check formatting
+    - goimports       # Check import ordering
+    - misspell        # Spell checking
+    - gosec           # Security checks
+    - bodyclose       # Check HTTP body close
+    - contextcheck    # Check context usage
+    - errorlint       # Error handling best practices
+    - gocritic        # Opinionated linter
+    - revive          # Fast, configurable linter
+    - prealloc        # Find slice preallocations
+    - unconvert       # Remove unnecessary type conversions
+    - unparam         # Find unused function parameters
+    - wastedassign    # Find wasted assignment statements
+
+linters-settings:
+  govet:
+    enable:
+      - shadow
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - style
+      - performance
+  revive:
+    rules:
+      - name: exported
+        severity: warning
+      - name: var-naming
+        severity: warning
+      - name: unexported-return
+        severity: warning
+  gosec:
+    excludes:
+      - G104 # Audit errors not checked (we use errcheck for this)
+  misspell:
+    locale: US
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
+  exclude-rules:
+    # Exclude test files from some linters
+    - path: _test\.go
+      linters:
+        - errcheck
+        - gosec
+        - bodyclose
+    # Exclude main.go from some linters
+    - path: cmd/server/main\.go
+      linters:
+        - contextcheck

@@ -1,0 +1,110 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Go: Build",
+            "type": "shell",
+            "command": "go",
+            "args": ["build", "-v", "./..."],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Test",
+            "type": "shell",
+            "command": "go",
+            "args": ["test", "-v", "./..."],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Test with Coverage",
+            "type": "shell",
+            "command": "go",
+            "args": ["test", "-v", "-coverprofile=coverage.out", "./..."],
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Coverage Report",
+            "type": "shell",
+            "command": "go",
+            "args": ["tool", "cover", "-html=coverage.out", "-o", "coverage.html"],
+            "group": "test",
+            "problemMatcher": [],
+            "dependsOn": "Go: Test with Coverage"
+        },
+        {
+            "label": "Ginkgo: Run Tests",
+            "type": "shell",
+            "command": "ginkgo",
+            "args": ["-v", "./..."],
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Ginkgo: Watch",
+            "type": "shell",
+            "command": "ginkgo",
+            "args": ["watch", "-v", "./..."],
+            "group": "test",
+            "isBackground": true,
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Lint",
+            "type": "shell",
+            "command": "golangci-lint",
+            "args": ["run", "./..."],
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Lint Fix",
+            "type": "shell",
+            "command": "golangci-lint",
+            "args": ["run", "--fix", "./..."],
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Fmt",
+            "type": "shell",
+            "command": "go",
+            "args": ["fmt", "./..."],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "Go: Vet",
+            "type": "shell",
+            "command": "go",
+            "args": ["vet", "./..."],
+            "group": "test",
+            "problemMatcher": ["$go"]
+        },
+        {
+            "label": "Go: Mod Tidy",
+            "type": "shell",
+            "command": "go",
+            "args": ["mod", "tidy"],
+            "group": "none",
+            "problemMatcher": []
+        },
+        {
+            "label": "Server: Run",
+            "type": "shell",
+            "command": "go",
+            "args": ["run", "./cmd/server"],
+            "group": "none",
+            "isBackground": true,
+            "problemMatcher": []
+        }
+    ]
+}
